@@ -28,7 +28,7 @@ document.querySelector(".cards-container").appendChild(cardFunc());
 function cardFunc (){
 
     //create elements
-    const div1 = document.createElement('div');
+    const topDiv = document.createElement('div');
     const div2 = document.createElement('div');  
     const div3 = document.createElement('div');
     const div4 = document.createElement('div');
@@ -36,7 +36,26 @@ function cardFunc (){
     const span1 = document.createElement('span');    
     
     //append elements
+    topDiv.appendChild(div2);
+    topDiv.appendChild(div3);
+    div3.appendChild(div4);
+    div4.appendChild(img1);
+    div3.appendChild(span1);
 
+    //add content
+    div2.textContent = "card";
+    img1.textContent = "";
+    span1.textContent = `By ${}`;
+
+    //add classes
+    topDiv.classList.add('card');
+    div2.classList.add('headline');
+    div3.classList.add('author');
+    div4.classList.add('img-container');
+
+
+
+    return topDiv
 
 };
 

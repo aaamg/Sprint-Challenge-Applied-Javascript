@@ -9,28 +9,46 @@
 //    <div class="tab">topic here</div>
 
 
+// const var1 = {
+//   config : null,
+//   data : {
+//     topics : [
+//       "javascript",
+//       {"b": "bootstrap"},
+//       {"c": "technology"},
+//       {"d": "jquery"},
+//       {"e": "node.js"},
+//     ]
+//   }
+// }
+// console.log(var1.data.topics[4].e);
+//-------------
+
 axios.get('https://lambda-times-backend.herokuapp.com/topics')
   .then (response => {
     //console.log(response);
+    funcName(response.data.topics);
+
 })
-
-document.querySelector(".tabs").appendChild(funcName());
-
-
+.catch( (err) => {
+  console.log(err.stack)
+})
+//document.querySelector(".tabs").appendChild(funcName());
 function funcName (axiosData){
    //create elements
-   const div1 = document.createElement('div');
+   
+   const tabContainer = document.querySelector(".topics");
+   axiosData.forEach( e => {
+    const div1 = document.createElement('div');
+    //add content
+   div1.textContent = e;
+   //add classes
+   div1.classList.add("tab");
+     tabContainer.appendChild(div1)
+   })
+   //.appendChild(div1);
    //append elements
    //nothing to append to a parent
-
-   //add content
-   div1.textContent = axiosData;
-
-
-    //add classes
-    div1.classList.add("tab");
-
-    
-    return newDiv;
+  //console.log(div1)
 
 };

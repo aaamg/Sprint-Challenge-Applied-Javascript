@@ -18,46 +18,46 @@
 //
 // Create a card for each of the articles and add the card to the DOM.
 
-axios.get('https://lambda-times-backend.herokuapp.com/topics')
-  .then (response => {
-    //console.log(response);
-});
+// axios.get('https://lambda-times-backend.herokuapp.com/topics')
+//   .then (response => {
+//     //console.log(response);
+// });
 
-document.querySelector(".cards-container").appendChild(cardFunc());
+// document.querySelector(".cards-container").appendChild(cardFunc());
 
-function cardFunc (){
+// function cardFunc (axiosData){
 
-    //create elements
-    const topDiv = document.createElement('div');
-    const div2 = document.createElement('div');  
-    const div3 = document.createElement('div');
-    const div4 = document.createElement('div');
-    const img1 = document.createElement('img');
-    const span1 = document.createElement('span');    
+//     //create elements
+//     const topDiv = document.createElement('div');
+//     const div2 = document.createElement('div');  
+//     const div3 = document.createElement('div');
+//     const div4 = document.createElement('div');
+//     const img1 = document.createElement('img');
+//     const span1 = document.createElement('span');    
     
-    //append elements
-    topDiv.appendChild(div2);
-    topDiv.appendChild(div3);
-    div3.appendChild(div4);
-    div4.appendChild(img1);
-    div3.appendChild(span1);
+//     //append elements
+//     topDiv.appendChild(div2);
+//     topDiv.appendChild(div3);
+//     div3.appendChild(div4);
+//     div4.appendChild(img1);
+//     div3.appendChild(span1);
 
-    //add content
-    div2.textContent = "card";
-    img1.textContent = "";
-    span1.textContent = `By ${}`;
+//     //add content
+//     div2.textContent = "card";
+//     img1.textContent = axiosData;
+//     span1.textContent = `By ${axiosData}`;
 
-    //add classes
-    topDiv.classList.add('card');
-    div2.classList.add('headline');
-    div3.classList.add('author');
-    div4.classList.add('img-container');
+//     //add classes
+//     topDiv.classList.add('card');
+//     div2.classList.add('headline');
+//     div3.classList.add('author');
+//     div4.classList.add('img-container');
 
 
 
-    return topDiv
+//     return topDiv
 
-};
+// };
 
 
 

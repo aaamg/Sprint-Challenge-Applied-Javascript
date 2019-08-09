@@ -18,46 +18,51 @@
 //
 // Create a card for each of the articles and add the card to the DOM.
 
-// axios.get('https://lambda-times-backend.herokuapp.com/topics')
-//   .then (response => {
-//     //console.log(response);
-// });
+axios.get('https://lambda-times-backend.herokuapp.com/articles')
+  .then (cardFunc)
+  .catch( (err) => {
+    console.log(err)
+  })
+// .then (response => {
+//     console.log(response)
+// })
 
-// document.querySelector(".cards-container").appendChild(cardFunc());
-
-// function cardFunc (axiosData){
-
-//     //create elements
-//     const topDiv = document.createElement('div');
-//     const div2 = document.createElement('div');  
-//     const div3 = document.createElement('div');
-//     const div4 = document.createElement('div');
-//     const img1 = document.createElement('img');
-//     const span1 = document.createElement('span');    
+function cardFunc (axiosData){
+    const container = document.querySelector(".cards-container");
+    //forEch
+    console.log(axiosData)
+    const data = axiosData.data.articles;
+    data.bootstrap.forEach(forFunc);
+    data.javascript.forEach(forFunc);
+    data.jquery.forEach(forFunc);
+    data.node.forEach(forFunc);
+    data.technology.forEach(forFunc);
     
-//     //append elements
-//     topDiv.appendChild(div2);
-//     topDiv.appendChild(div3);
-//     div3.appendChild(div4);
-//     div4.appendChild(img1);
-//     div3.appendChild(span1);
-
-//     //add content
-//     div2.textContent = "card";
-//     img1.textContent = axiosData;
-//     span1.textContent = `By ${axiosData}`;
-
-//     //add classes
-//     topDiv.classList.add('card');
-//     div2.classList.add('headline');
-//     div3.classList.add('author');
-//     div4.classList.add('img-container');
-
-
-
-//     return topDiv
-
-// };
-
+    function forFunc(param1){
+        const name = param1.authorName;
+        const photo = param1.authorPhoto;
+        const headline = param1.headline;
+        const theImage = document.createElement('img');
+        const topDiv = document.createElement('div');
+        topDiv.classList.add('card');
+        const headlineDiv = document.createElement('div'); 
+        headlineDiv.classList.add('headline');
+        headlineDiv.textContent = headline;
+        topDiv.appendChild(headlineDiv);
+        container.appendChild(topDiv);
+        const div3 = document.createElement('div');
+        topDiv.appendChild(div3);
+        div3.classList.add('author');
+        const div4 = document.createElement('div');
+        div3.appendChild(div4);
+        div4.classList.add('img-container');
+        theImage.src = photo;
+        div4.appendChild(theImage);
+        const span1 = document.createElement('span');  
+        div3.appendChild(span1);
+        span1.textContent = name;
+        
+    }
+};
 
 

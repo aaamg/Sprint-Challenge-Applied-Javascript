@@ -14,13 +14,22 @@ axios.get('https://lambda-times-backend.herokuapp.com/topics')
     //console.log(response);
 })
 
+document.querySelector(".tabs").appendChild(funcName());
 
-function funcName (event){
-    const div1 = document.createElement('div');
 
+function funcName (axiosData){
+   //create elements
+   const div1 = document.createElement('div');
+   //append elements
+   //nothing to append to a parent
+
+   //add content
+   div1.textContent = axiosData;
+
+
+    //add classes
     div1.classList.add("tab");
 
-    div1.textContent = axiosData;
     
     return newDiv;
 

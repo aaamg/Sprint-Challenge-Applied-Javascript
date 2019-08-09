@@ -8,6 +8,7 @@
 //    <span class="temp">98°</span>
 //  </div >
 // And add it to the DOM in the header-container component
+//window.addEventListener("load", function(event){
 
 document.querySelector(".header-container").appendChild(Header());
 
@@ -21,10 +22,9 @@ function Header() {
         const span2 = document.createElement('span');
 
         //append elements
-        head.appendChild(topDiv);
-        head.appendChild(span1);
-        head.appendChild(headTitle);
-        head.appendChild(span2);
+        topDiv.appendChild(span1);
+        topDiv.appendChild(headTitle);
+        topDiv.appendChild(span2);
 
         //add content
         span1.textContent = "MARCH 28, 2019";
@@ -38,3 +38,4 @@ function Header() {
 
         return topDiv;
     };
+//});

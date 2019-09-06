@@ -8,47 +8,28 @@
 //  The tab component should look like this:
 //    <div class="tab">topic here</div>
 
-
-// const var1 = {
-//   config : null,
-//   data : {
-//     topics : [
-//       "javascript",
-//       {"b": "bootstrap"},
-//       {"c": "technology"},
-//       {"d": "jquery"},
-//       {"e": "node.js"},
-//     ]
-//   }
-// }
-// console.log(var1.data.topics[4].e);
-//-------------
-
 axios.get('https://lambda-times-backend.herokuapp.com/topics')
-  .then (response => {
-    //console.log(response);
-    funcName(response.data.topics);
+    .then(res => {
+        //console.log('Response data: ', res.data.topics);
+        //let data = res.data.topics;
+        //console.log('data var: ', data);
+        res.data.topics.forEach(item => {
+            const newTabComp = tabComp(item);
+            topics.appendChild(newTabComp);
+        })        
+    })
 
-})
-.catch( (err) => {
-  console.log(err.stack)
-})
-//document.querySelector(".tabs").appendChild(funcName());
-function funcName (axiosData){
-   //create elements
-   
-   const tabContainer = document.querySelector(".topics");
-   axiosData.forEach( e => {
-    const div1 = document.createElement('div');
-    //add content
-   div1.textContent = e;
-   //add classes
-   div1.classList.add("tab");
-     tabContainer.appendChild(div1)
-   })
-   //.appendChild(div1);
-   //append elements
-   //nothing to append to a parent
-  //console.log(div1)
 
-};
+    function tabComp(para1){
+        const tab = document.createElement('div');
+        tab.classList.add('tab');
+        tab.textContent = para1;
+
+        return tab
+    }
+
+    const topics = document.querySelector('.topics');
+    
+
+
+    

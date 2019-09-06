@@ -7,35 +7,33 @@
 //    <h1>Lambda Times</h1>
 //    <span class="temp">98°</span>
 //  </div >
-// And add it to the DOM in the header-container component
-//window.addEventListener("load", function(event){
-
-document.querySelector(".header-container").appendChild(Header());
+// And add it to the DOM in the .header-container component
 
 function Header() {
+    const topDiv = document.createElement('div'),
+          date = document.createElement('span'),
+          h1 = document.createElement('h1'),
+          temp= document.createElement('span');
 
-    //create elements
-    //const headGen = (para1, para2, para3, para4) => {
-        const topDiv = document.createElement('div');
-        const span1 = document.createElement('span');
-        const headTitle = document.createElement('h1');
-        const span2 = document.createElement('span');
+    //structure
+    topDiv.appendChild(date);      
+    topDiv.appendChild(h1);
+    topDiv.appendChild(temp);
 
-        //append elements
-        topDiv.appendChild(span1);
-        topDiv.appendChild(headTitle);
-        topDiv.appendChild(span2);
+    //classList
+    topDiv.classList.add('header');
+    date.classList.add('date');
+    temp.classList.add('temp');
 
-        //add content
-        span1.textContent = "MARCH 28, 2019";
-        headTitle.textContent = "Lambda Times";
-        span2.textContent = "98";
+    //textContent
+    date.textContent = "MARCH 28, 2019";
+    h1.textContent = "Lambda Times";
+    temp.textContent = "98°";
 
-        //add classes
-        topDiv.classList.add('header');
-        span1.classList.add('date');
-        span2.classList.add('temp');
+    return topDiv
+};
 
-        return topDiv;
-    };
-//});
+//<div class="header-container">
+
+const headerContainer = document.querySelector('.header-container');
+headerContainer.appendChild(Header());
